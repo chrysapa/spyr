@@ -12,8 +12,8 @@ def divisively_normalize_spatialfreq(data, divisive_exponent=2, saturation_const
     normalizers=np.sum(data, axis=1)
     
     normalized = np.full(data.shape, 0.0)
-    normalized[0,:,:,:]=data[0,:,:,:]**r / ((normalizers[0]+normalizers[1])**r + s**r)
-    normalized[numlevels-1,:,:,:]=data[numlevels-1,:,:,:]**r/((normalizers[numlevels-1]+normalizers[numlevels-2])**r+s**r)
+    normalized[0]=data[0,:,:,:]**r / ((normalizers[0]+normalizers[1])**r + s**r)
+    normalized[numlevels-1]=data[numlevels-1]**r/((normalizers[numlevels-1]+normalizers[numlevels-2])**r+s**r)
     
     inter_levels=range(1,numlevels-1)
     for level in (inter_levels):
